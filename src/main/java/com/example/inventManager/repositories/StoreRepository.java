@@ -7,6 +7,6 @@ import com.example.inventManager.models.Store;
 
 
 @Repository
-public interface IStoreRepository extends JpaRepository<Store,UUID> {
+public interface StoreRepository extends JpaRepository<Store,UUID> {
     
 }

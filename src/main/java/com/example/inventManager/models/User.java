@@ -5,12 +5,14 @@ import java.util.UUID;
 import com.example.inventManager.models.enums.ERole;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 public class User {
 
@@ -31,7 +33,9 @@ public class User {
     @Column(nullable = false)
     private ERole role;
 
-    // Getters and setters (omitted for brevity)
-
-    // Constructors (omitted for brevity)
+    public User(String username, String email, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 }
