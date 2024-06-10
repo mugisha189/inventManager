@@ -1,4 +1,5 @@
 package com.example.inventManager.models;
+
 import java.util.UUID;
 
 import jakarta.persistence.*;
@@ -18,7 +19,6 @@ public class Item {
     @Column(nullable = false)
     private String name;
 
-
     @Column(nullable = false)
     private double quantity;
 
@@ -28,6 +28,12 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
+
+    public Item(String name, double quantity, double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
 
     // Getters and setters (omitted for brevity)
 

@@ -1,4 +1,5 @@
 package com.example.inventManager.models;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,10 @@ public class Store {
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Item> items;
+
+    public Store(String name) {
+        this.name = name;
+    }
 
     // Getters and setters (omitted for brevity)
 

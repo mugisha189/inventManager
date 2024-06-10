@@ -1,18 +1,23 @@
 package com.example.inventManager.dto.requests;
-import jakarta.validation.constraints.*;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 
 
 @Getter
 public class CreateItemDTO {
+
+    @NotBlank
+    private String name;
+
     @NotNull
-    @Email
-    private String email;
+    @Positive
+    private Double quantity;
 
-    @Size(min = 5, max = 20)
-    private String username;
+    @NotNull
+    @Positive
+    private Double price;
 
-    @Size(min = 8, max = 20)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.")
-    private String password;
 }
