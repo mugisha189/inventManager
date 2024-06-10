@@ -1,4 +1,5 @@
 package com.example.inventManager.services.serviceImpl;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import com.example.inventManager.models.User;
 import com.example.inventManager.payload.ApiResponse;
 import com.example.inventManager.repositories.UserRepository;
 import com.example.inventManager.services.UserService;
+import com.example.inventManager.utils.Hash;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,14 +40,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<ApiResponse> createUser(CreateUserDTO createUserDTO) { 
-        try {
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        User user = new User(createUserDTO.getUsername(), createUserDTO.getPassword(), createUserDTO.getEmail())
-        return userRepository.save(user);
+    public ResponseEntity<ApiResponse> createUser(CreateUserDTO createUserDTO) {
+        String password = Hash.hashPassword(createUserDTO.getPassword());
+        User user = new User(createUserDTO.getUsername(), createUserDTO.getEmail(), password);
+        return ResponseEntity.ok().body(new ApiResponse(
+                true,
+                "Successfully created user",
+                user));
     }
 
     @Override
