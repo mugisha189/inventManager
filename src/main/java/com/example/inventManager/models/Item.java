@@ -1,4 +1,6 @@
 package com.example.inventManager.models;
+import java.util.UUID;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +12,8 @@ import lombok.Setter;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(nullable = false)
     private String name;
